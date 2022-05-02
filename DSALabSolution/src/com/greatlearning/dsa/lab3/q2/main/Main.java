@@ -27,7 +27,7 @@ public class Main {
 			} else if(list.get(left)+list.get(right) < sum) {
 				left++;
 			} else {
-				right++;
+				right--;
 			}
 		}
 		return "\nnodes are not found.";
@@ -52,7 +52,7 @@ public class Main {
 					i -= 1;
 			}
 		}
-		System.out.print("Sum=");
+		System.out.print("\nSum=");
 		sum = sc.nextInt();
 		
 		System.out.println(Main.findPairSum(BstCreation.getList(), root, sum));

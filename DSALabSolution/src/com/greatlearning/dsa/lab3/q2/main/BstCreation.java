@@ -47,12 +47,15 @@ public class BstCreation {
 		// If the root is null, the tree is empty.
 		if (y == null)
 			y = newnode;
+		
 		// assign new node node to the left child
 		else if (key < y.key)
 			y.left = newnode;
+		
 		// assign the new node to the right child
 		else
 			y.right = newnode;
+		
 		// return pointer to new node
 		return y;
 	}
