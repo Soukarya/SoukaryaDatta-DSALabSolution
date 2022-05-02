@@ -29,45 +29,48 @@ public class Main {
 		boolean areBracketsBalanced = false;
 
 		if (lengthOfInput % 2 == 0) {
-			for (int i = 0; i < lengthOfInput; i++) {
-				ch = input.charAt(i);
-				if (ch == '(' || ch == '{' || ch == '[' || ch == '<') {
-					s.push(input.charAt(i));
-					continue;
-				}
+			if(input.matches("^[\\(\\)\\{\\}\\<\\>\\[\\]]*$")) {
+				for (int i = 0; i < lengthOfInput; i++) {
+					ch = input.charAt(i);
+					if (ch == '(' || ch == '{' || ch == '[' || ch == '<') {
+						s.push(input.charAt(i));
+						continue;
+					}
 
-				if (s.isEmpty()) {
-					return areBracketsBalanced;
-				} else {
-					switch (ch) {
-					case ')':
-						check = s.pop();
-						if (check == '(') {
-							areBracketsBalanced = true;
+					if (s.isEmpty()) {
+						return areBracketsBalanced;
+					} else {
+						switch (ch) {
+							case ')':
+								check = s.pop();
+								if (check == '(') {
+									areBracketsBalanced = true;
+								}
+								break;
+							case '}':
+								check = s.pop();
+								if (check == '{') {
+									areBracketsBalanced = true;
+								}
+								break;
+							case ']':
+								check = s.pop();
+								if (check == '[') {
+									areBracketsBalanced = true;
+								}
+								break;
+							case '>':
+								check = s.pop();
+								if (check == '<') {
+									areBracketsBalanced = true;
+								}
+								break;
 						}
-						break;
-					case '}':
-						check = s.pop();
-						if (check == '{') {
-							areBracketsBalanced = true;
-						}
-						break;
-					case ']':
-						check = s.pop();
-						if (check == '[') {
-							areBracketsBalanced = true;
-						}
-						break;
-					case '>':
-						check = s.pop();
-						if (check == '<') {
-							areBracketsBalanced = true;
-						}
-						break;
 					}
 				}
 			}
 		}
+		
 		s = null;
 		return areBracketsBalanced;
 	}
