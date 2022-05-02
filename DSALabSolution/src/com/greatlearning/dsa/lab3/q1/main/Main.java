@@ -1,4 +1,4 @@
-/*
+/* 
  * Author : Soukarya Datta
  * JDK    : Java 17
  * Version: 1.0.1
@@ -27,9 +27,10 @@ public class Main {
 		char ch = ' ';
 		char check = ' ';
 		boolean areBracketsBalanced = false;
+		String regex = "^[\\(\\)\\{\\}\\<\\>\\[\\]]*$";
 
-		if (lengthOfInput % 2 == 0) {
-			if(input.matches("^[\\(\\)\\{\\}\\<\\>\\[\\]]*$")) {
+		if(input.matches(regex)) {
+			if (lengthOfInput % 2 == 0) {
 				for (int i = 0; i < lengthOfInput; i++) {
 					ch = input.charAt(i);
 					if (ch == '(' || ch == '{' || ch == '[' || ch == '<') {
@@ -69,6 +70,8 @@ public class Main {
 					}
 				}
 			}
+		} else {
+			throw new RuntimeException("Invalid input!!! Please enter only brackets- (), {}, [] and/or <>");
 		}
 		
 		s = null;
@@ -78,17 +81,22 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter a string which will contain only brackets- (), {}, [], and/or <>:");
 		String input = sc.next();
 		int lengthOfInput = input.length();
 
 		if (lengthOfInput > 0) {
-			if (check(input, lengthOfInput)) {
-					System.out.println("The entered Strings has Balanced Brackets");
+			try {
+				if (check(input, lengthOfInput)) {
+					System.out.println("\nThe entered Strings has Balanced Brackets");
 				} else {
-					System.out.println("The entered Strings do not contain Balanced Brackets");
+					System.out.println("\nThe entered Strings do not contain Balanced Brackets");
 				}
+			} catch(RuntimeException e) {
+				System.err.println("\n"+e.getMessage());
+			}
 		} else {
-			System.out.println("You entered an empty string!!! Thank you");
+			System.err.println("\nYou entered an empty string!!! Thank you");
 		}
 
 		// Resource de-allocation
