@@ -23,14 +23,14 @@ public class Main {
 		
 		while(left<right) {
 			if(list.get(left)+list.get(right) == sum) {
-				return "\nPair is ("+list.get(left)+","+list.get(right)+")";
+				return "Pair is ("+list.get(left)+","+list.get(right)+")";
 			} else if(list.get(left)+list.get(right) < sum) {
 				left++;
 			} else {
 				right--;
 			}
 		}
-		return "\nnodes are not found.";
+		return "nodes are not found.";
 	}
 
 	public static void main(String[] args) {

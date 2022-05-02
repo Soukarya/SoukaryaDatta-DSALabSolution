@@ -88,7 +88,7 @@ public class Main {
 		if (lengthOfInput > 0) {
 			try {
 				if (check(input, lengthOfInput)) {
-					System.out.println("\nThe entered Strings has Balanced Brackets");
+					System.out.println("\nThe entered String has Balanced Brackets");
 				} else {
 					System.out.println("\nThe entered Strings do not contain Balanced Brackets");
 				}
